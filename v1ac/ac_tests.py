@@ -49,7 +49,7 @@ def test_vector_addition(vector_addition):
 
 def test_negative_of_vector(negative_of_vector, vector_addition):
     class TestNegativeOfVector(tst.TestCase):
-        v = np.array((1, 2, 3))
+        v = np.array((1, -2, 3))
         z = np.zeros(3)
 
         def test_negative_of_vector(self):
@@ -215,7 +215,7 @@ def test_determinant(determinant_2, determinant_3, determinant):
         def test_determinant_zero3(self):
             np.testing.assert_equal(determinant(self.Q), 0)
         def test_determinant_scalar(self):
-            np.testing.assert_equal(determinant(np.array(((42)))), 42)
+            np.testing.assert_equal(determinant(np.array(((42,),))), 42)
         def test_determinant_too_large(self):
             with self.assertRaises(DimensionError):
                 determinant(self.R)
@@ -265,9 +265,9 @@ def test_magisch_vierkant(magisch_vierkant):
         r2 = np.array(((5, 5, 6.5), (7, 5.5, 4), (4.5, 6, 6)))
 
         def test_integer(self):
-            np.testing.assert_equal(magisch_vierkant(self.i), self.i2)
+            np.testing.assert_almost_equal(magisch_vierkant(self.i), self.i2)
         def test_rational(self):
-            np.testing.assert_equal(magisch_vierkant(self.r), self.r2)
+            np.testing.assert_almost_equal(magisch_vierkant(self.r), self.r2)
     run_tests(TestMagischVierkant)
 
 def test_limit(limit_left, limit_right, limit):
